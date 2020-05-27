@@ -15,7 +15,7 @@
     @endif
   
   <div class="card">
-      <div class="card-header" style="background-color: gray">Skills Details</div><br>
+      <div class="card-header" style="background-color: gray">Technical Skills Details</div><br>
         <div class="row">
 
           <div class="col-sm-6"><a class="btn btn-outline-info" href="/skills/CV/{{Auth::user()->id}}" style="width: 100%">Preview</a></div>
@@ -29,7 +29,7 @@
                 <div class="row">
                 <div class="col-xs-12 col-sm-6 col-md-6">
                 <div class="form-group">
-                              <input type="text" name="subject" id="" class="form-control" placeholder="subject" tabindex="1" value=""  required>
+                              <input type="text" name="subject" id="" class="form-control" placeholder="Language(c/c++,java etc...)" tabindex="1" value=""  required>
                               @if($errors->has('subject'))
                            <div  class="alert alert-danger">
                                         <strong>{{ $errors->first('subject') }}</strong>

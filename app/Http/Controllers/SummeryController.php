@@ -12,7 +12,7 @@ class SummeryController extends Controller
    {
 
             $this->validate($request, [
-                'user_id'   => 'unique:summery',
+                'user_id'   => 'unique:summery', 'max:500',
                 
             ]);
    		      $contact = new summery;

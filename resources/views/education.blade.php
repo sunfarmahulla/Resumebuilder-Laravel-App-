@@ -28,6 +28,7 @@
                 <div class="row">
                 <div class="col-xs-12 col-sm-6 col-md-6">
                 <div class="form-group">
+                            <label><b>Qualification</b></label>
                               <input type="text" name="qualification" id="first_name" class="form-control" placeholder="qualification" tabindex="1" value=""  required>
                               @if($errors->has('qualification'))
                            <div  class="alert alert-danger">
@@ -40,24 +41,27 @@
                       
               <div class="col-xs-12 col-sm-6 col-md-6">
                 <div class="form-group">
+                  <label><b>Current Status:</b></label>
                   <select class="form-control" name="completeEdu" >
                     <option class="active" value="Graduated">Graduated</option>
-                    <option value="Graduated">Graduting</option>
-                    <option value="Enrolled">Enrolled</option>
-                    <option value="Deferred">Deferred</option>
+                    <option value="Pursuing">Pursuing</option>
+                    <option value="Passed">Passed</option>
                   </select>
                 </div>
               </div>
             </div>
             <div class="form-group">
-              <input type="text"  name="school" placeholder="scool/organization/college"  class="form-control" tabindex="3">
+              <label><b>School/Organization/College</b></label>
+              <input type="text"  name="school" placeholder="school/organization/college"  class="form-control" tabindex="3">
              
             </div>
             <div class="form-group">
+              <label><b>Passing Year:</b></label>
               <input type="month"  name="year" value="March,2019"  class="form-control" tabindex="3">
              
             </div>
             <div class="form-group">
+              <label><b>Percentage(%):</b></label>
               <input type="number" name="percentage" min="10" max="100" step="1" class="form-control " placeholder="Percentage %" tabindex="4" required>
             </div>
             <button type="submit" class="btn btn-success">Submit</button>

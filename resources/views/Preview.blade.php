@@ -14,7 +14,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous"></script>
 </head>
 <body>
-@foreach($shares as $row)
 <div id="HTMLtoPDF">
 <div class="resume">
 <div class="row">
@@ -25,6 +24,7 @@
                 <div class="col-lg-12">
                   <div class="col-xs-12">
                     <ul style="list-style: none; text-align: center;">
+                      @foreach($contact as $row)
                       <li style="font-size:25px;"><strong>{{$row->firstName}} {{$row->MiddleName}} {{$row->endName}}</strong></li>
                       <li>Softwre Engineer</li>
                       <li>Google Inc.</li>
@@ -32,6 +32,7 @@
                        <li>{{$row->state}},{{$row->city}} {{$row->zip}} {{$row->country}}</li>
                       <li><i class="fa fa-phone"></i>{{$row->Phone}} </li>
                       <li><i class="fa fa-envelope"></i>{{$row->email}}</li>
+                      @endforeach
                     </ul>
                   </div>
                 </div>
@@ -42,7 +43,9 @@
       <div class="bs-callout bs-callout-danger">
         <h4>Summary</h4>
         <p>
-         {!!$row->summery!!}
+          @foreach($summary as $summ)
+         {!!$summ->summery!!}
+         @endforeach
         </p>
         
       </div>
@@ -56,22 +59,26 @@
       </div>
       <div class="bs-callout bs-callout-danger">
         <h4>Skills</h4>
-        {{$row->subject}}
+        @foreach($skill as $show)
+        {{$show->subject}}
                 <div class="progress">
                   <div class="progress-bar progress-bar-info progress-bar-striped"  role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:{{$row->sk_percentage}}%; text-align: center;">
-                   {{$row->subject}} {{$row->sk_percentage}}%
+                   {{$show->subject}} {{$show->sk_percentage}}%
 
                   </div>
                 </div>
+        @endforeach
       </div>
       <div class="bs-callout bs-callout-danger">
         <h4>Language and  Skills</h4>
-        {{$row->language}}
+        @foreach($language as $language)
+        {{$language->language}}
                 <div class="progress">
-                  <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:{{$row->la_percentage}}%; text-align: center;">
-                    {{$row->la_percentage}}% {{$row->language}}
+                  <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:{{$language->la_percentage}}%; text-align: center;">
+                    {{$language->la_percentage}}% {{$language->language}}
                   </div>
             </div>
+        @endforeach
       </div> 
       <div class="bs-callout bs-callout-danger">
         <h4>Education</h4>
@@ -87,21 +94,22 @@
                         
                       </tr></thead>
                       <tbody>
-
+                        @foreach($education as $row1)
                         <tr>
-                          <td>{{$row->qualification}}</td>
-                          <td>{{$row->completeEdu}}</td>
-                          <td>{{$row->SchoolName}}</td>
-                          <td>{{$row->edu_year}}</td>
+                          <td>{{$row1->qualification}}</td>
+                          <td>{{$row1->completeEdu}}</td>
+                          <td>{{$row1->SchoolName}}</td>
+                          <td>{{$row1->edu_year}}</td>
                           <td>
                             <div class="progress">
                             <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar"
-                            aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:{{$row->edu_percentage}}%; text-align: center;">
-                              {{$row->edu_percentage}}%
+                            aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:{{$row1->edu_percentage}}%; text-align: center;">
+                              {{$row1->edu_percentage}}%
                             </div>
                           </div></td>
                           
                           </tr>
+                          @endforeach
                        </tbody>
                     </table>
 
@@ -109,8 +117,9 @@
        <div class="bs-callout bs-callout-danger">
                  <h4>Hobbies</h4>
                   <ul class="list-group">
-                    <li class="list-group-item">{!!$row->Hobbies!!}</li>
-                    
+                    @foreach($hobbies as $row2)
+                    <li class="list-group-item">{!!$row2->Hobbies!!}</li>
+                    @endforeach
                   </ul>
                 </div>
         <div class="bs-callout bs-callout-danger">
@@ -119,12 +128,14 @@
                   <div class="col-lg-12">
                     <div class="col-xs-12">
                       <ul style="list-style: none; ">
-                        <li><strong>{{$row->ref_name}}</strong></li>
-                        <li ><strong>Relationships:</strong> {{$row->relationship}}</li>
-                        <li ><strong>Comany:</strong>{{$row->company}}</li>
-                        <li><strong>Address:</strong>{{$row->ref_address}}</li>
-                        <li><i class="fa fa-phone"></i> {{$row->ref_phone}}</li>
-                        <li><i class="fa fa-envelope"></i>{{$row->ref_email}}</li>
+                        @foreach($refrence as $row3)
+                        <li><strong>{{$row3->ref_name}}</strong></li>
+                        <li ><strong>Relationships:</strong> {{$row3->relationship}}</li>
+                        <li ><strong>Comany:</strong>{{$row3->company}}</li>
+                        <li><strong>Address:</strong>{{$row3->ref_address}}</li>
+                        <li><i class="fa fa-phone"></i> {{$row3->ref_phone}}</li>
+                        <li><i class="fa fa-envelope"></i>{{$row3->ref_email}}</li>
+                        @endforeach
                       </ul>
                     </div>
                   </div>
@@ -141,8 +152,6 @@
   <form>
          <input type = "button" class="btn btn-info" value = "Print" onclick = "window.print()" />
       </form>  
-
-@endforeach
 </div>
 </body>
 </html>
